@@ -3,7 +3,7 @@
     --card-bg: rgba(30, 30, 38, 0.85);
     --text-main: #e0e0e0;
     --text-muted: #9a9aab;
-    --accent-color: #5784c2; /* Changed to a clean generic blue */
+    --accent-color: #5784c2;
 }
 
 body {
@@ -121,3 +121,17 @@ input[type="text"]:focus { border-color: var(--accent-color); }
 .checkmark:after { content: ""; position: absolute; display: none; }
 .radio-container input:checked ~ .checkmark:after { display: block; }
 .radio-container .checkmark:after { top: 5px; left: 5px; width: 8px; height: 8px; border-radius: 50%; background: white; }
+
+/* --- Advert Link --- */
+.site-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.site-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px var(--accent-color);
+}

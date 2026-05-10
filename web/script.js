@@ -73,7 +73,6 @@ function renderLibrary(lib) {
       const formatOption = document.querySelector(
         'input[name="naming"]:checked',
       ).value;
-      // Ask user if they want CBZ or Images for quick download (Defaulting to CBZ here for speed, you can change to false for images)
       await eel.download_chapters(data.title, [latest], true, formatOption)();
     });
 
