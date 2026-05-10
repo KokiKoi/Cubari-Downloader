@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubari Downloader</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="layout-wrapper">
+        <aside class="sidebar">
+            <div class="control-panel">
+                <h2>Cubari Downloader</h2>
+                
+                <div class="input-row">
+                    <input type="text" id="cubari-link" placeholder="Paste Cubari link here...">
+                    <button class="btn" id="add-library-btn" title="Add to Library">+</button>
+                </div>
+                <button class="btn" id="confirm-btn">Load Link</button>
+                
+                <div class="status-box" id="info-box">Waiting for input...</div>
+
+                <div class="divider"></div>
+
+                <h3 class="section-title">My Library</h3>
+                <div id="library-list" class="library-container">
+                    </div>
+
+                <div class="divider"></div>
+
+                <button class="btn" id="select-all-btn" style="display: none; margin-bottom: 10px; font-size: 0.8rem; padding: 8px;">Select All Chapters</button>
+
+                <div class="naming-options">
+                    <p class="format-title">Folder Naming Format:</p>
+                    <label class="radio-container">Chapter X - Chapter Title
+                        <input type="radio" name="naming" value="chap_num_title" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">Chapter X
+                        <input type="radio" name="naming" value="chap_num">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">Chapter Title Only
+                        <input type="radio" name="naming" value="title_only">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">Series - Chapter X - Chapter Title
+                        <input type="radio" name="naming" value="series_chap_title">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <button class="btn btn-green" id="dl-cbz-btn">Download as CBZ</button>
+                <button class="btn btn-green" id="dl-images-btn">Download as Images</button>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            <h1 id="series-title">Library Overview</h1>
+            <div class="grid" id="chapter-grid"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

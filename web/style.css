@@ -1,0 +1,123 @@
+:root {
+    --bg-color: #0b0b0e;
+    --card-bg: rgba(30, 30, 38, 0.85);
+    --text-main: #e0e0e0;
+    --text-muted: #9a9aab;
+    --accent-color: #5784c2; /* Changed to a clean generic blue */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; }
+
+h1 {
+    color: #ffffff; font-size: 2.2rem; text-transform: uppercase;
+    letter-spacing: 3px; margin-bottom: 2rem; text-align: center;
+}
+
+.layout-wrapper { display: flex; width: 100%; max-width: 1480px; gap: 3.5rem; align-items: flex-start; justify-content: center; }
+
+/* SIDEBAR / CONTROLS */
+.sidebar { width: 320px; flex-shrink: 0; position: sticky; top: 2rem; }
+
+.control-panel {
+    background-color: var(--card-bg); backdrop-filter: blur(8px);
+    border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex; flex-direction: column; gap: 1rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.control-panel h2 { margin: 0; font-size: 1.2rem; text-align: center; }
+
+.input-row { display: flex; gap: 8px; }
+.input-row input { flex: 1; }
+
+input[type="text"] {
+    box-sizing: border-box; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white; padding: 12px; border-radius: 6px; outline: none;
+}
+input[type="text"]:focus { border-color: var(--accent-color); }
+
+.btn {
+    background: rgba(87, 132, 194, 0.2); backdrop-filter: blur(8px);
+    color: #ffffff; padding: 12px; border: 1px solid rgba(255, 255, 255, 0.25); 
+    border-radius: 6px; font-weight: bold; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s ease; text-align: center;
+}
+.btn:hover { background-color: rgba(87, 132, 194, 0.5); }
+
+.btn-green { background: rgba(76, 175, 80, 0.2); }
+.btn-green:hover { background: rgba(76, 175, 80, 0.5); }
+
+.status-box {
+    font-size: 0.85rem; color: var(--text-muted); min-height: 40px;
+    padding: 10px; background: rgba(0,0,0,0.2); border-radius: 6px; border: 1px dashed rgba(255,255,255,0.1);
+}
+
+.divider { height: 1px; background: rgba(255,255,255,0.1); margin: 5px 0; }
+.section-title { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; margin: 0; letter-spacing: 1px; }
+
+/* LIBRARY STYLES */
+.library-container {
+    display: flex; flex-direction: column; gap: 8px;
+    max-height: 200px; overflow-y: auto; padding-right: 5px;
+}
+.library-container::-webkit-scrollbar { width: 4px; }
+.library-container::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 4px; }
+
+.lib-item {
+    background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px; padding: 10px; position: relative; display: flex; flex-direction: column;
+}
+.lib-title { font-size: 0.85rem; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 5px;}
+.lib-actions {
+    display: none; gap: 5px;
+}
+.lib-item:hover .lib-actions { display: flex; }
+.lib-btn {
+    background: rgba(255,255,255,0.1); border: none; color: white;
+    padding: 5px; font-size: 0.7rem; border-radius: 4px; cursor: pointer; flex: 1; transition: 0.2s;
+}
+.lib-btn:hover { background: var(--accent-color); }
+.lib-btn-red:hover { background: #d32f2f; }
+
+/* MAIN CONTENT / GRID */
+.main-content { flex: 1; max-width: 1080px; display: flex; flex-direction: column; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; width: 100%; }
+
+.card {
+    background-color: var(--card-bg); backdrop-filter: blur(4px);
+    border-radius: 12px; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.2s ease, border-color 0.2s ease; color: var(--text-main);
+    display: flex; flex-direction: column; cursor: pointer;
+}
+.card:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.25); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); }
+.card.selected { border-color: var(--accent-color); background-color: rgba(87, 132, 194, 0.15); box-shadow: 0 0 15px rgba(87, 132, 194, 0.4); }
+
+.cover-img { width: 100%; aspect-ratio: 1 / 1; border-radius: 0; object-fit: cover; margin-bottom: 0.9rem; background-color: #1f1f26; display: block; }
+.cover-placeholder { width: 100%; aspect-ratio: 1 / 1; border-radius: 0; background-color: #1f1f26; display: flex; align-items: center; justify-content: center; color: #9a9aab; font-size: 0.9rem; margin-bottom: 0.9rem; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
+
+.card h2 { font-size: 1rem; margin: 0 0 0.4rem 0; color: #ffffff; text-align: center; }
+.chapter-name { font-size: 0.8rem; color: #cfcfcf; text-align: center; margin-bottom: 0.4rem; font-style: italic; }
+.meta { font-size: 0.75rem; color: var(--text-muted); text-align: center; }
+
+/* Custom Radio Buttons */
+.naming-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+.format-title { font-size: 0.85rem; color: var(--text-muted); margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 1px; }
+.radio-container { display: block; position: relative; padding-left: 28px; cursor: pointer; font-size: 0.85rem; user-select: none; }
+.radio-container input { position: absolute; opacity: 0; cursor: pointer; }
+.checkmark { position: absolute; top: -2px; left: 0; height: 18px; width: 18px; background-color: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50%; transition: 0.2s; }
+.radio-container:hover input ~ .checkmark { border-color: rgba(255, 255, 255, 0.5); }
+.radio-container input:checked ~ .checkmark { background-color: var(--accent-color); border-color: var(--accent-color); }
+.checkmark:after { content: ""; position: absolute; display: none; }
+.radio-container input:checked ~ .checkmark:after { display: block; }
+.radio-container .checkmark:after { top: 5px; left: 5px; width: 8px; height: 8px; border-radius: 50%; background: white; }
